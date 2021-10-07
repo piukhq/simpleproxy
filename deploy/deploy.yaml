@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simpleproxy
+  labels:
+    app: simpleproxy
+spec:
+  selector:
+    matchLabels:
+      app: simpleproxy
+  template:
+    metadata:
+      labels:
+        app: simpleproxy
+      annotations:
+        kubectl.kubernetes.io/default-container: app
+    spec:
+      containers:
+      - name: app
+        image: ghcr.io/binkhq/simpleproxy:latest
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "100m"
+          limits:
+            memory: "64Mi"
+            cpu: "1000m"
