@@ -1,11 +1,10 @@
 name: build
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
-  schedule:
-    - cron: "22 05 1 * *"
 
 jobs:
   build:
